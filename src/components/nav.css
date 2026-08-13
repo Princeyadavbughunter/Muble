@@ -1,0 +1,230 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 120;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.4rem var(--gutter);
+  will-change: transform;
+  transition: background 0.6s var(--ease-out), border-color 0.6s var(--ease-out),
+    padding 0.6s var(--ease-out), color 0.4s var(--ease-out);
+  border-bottom: 1px solid transparent;
+}
+
+.nav.is-solid {
+  background: rgba(246, 242, 236, 0.72);
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  border-bottom-color: var(--line-soft);
+  padding-block: 1rem;
+}
+
+/* while the fullscreen menu is up the bar sits on ink */
+.nav.is-over {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom-color: transparent;
+  color: var(--bone);
+}
+
+.nav__brand {
+  display: flex;
+  align-items: baseline;
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  z-index: 1;
+}
+.nav__mark--italic {
+  font-style: italic;
+  color: var(--clay);
+}
+.nav.is-over .nav__mark--italic {
+  color: var(--clay-soft);
+}
+
+/* ---------- desktop links with roll-up hover ---------- */
+
+.nav__links {
+  display: flex;
+  gap: clamp(1.4rem, 2.6vw, 2.6rem);
+}
+
+.nav__link {
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  overflow: hidden;
+  display: block;
+  height: 1.2em;
+}
+
+.nav__link-inner {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.55s var(--ease-out);
+}
+.nav__link-inner > span {
+  height: 1.2em;
+  line-height: 1.2em;
+}
+.nav__link:hover .nav__link-inner {
+  transform: translateY(-1.2em);
+}
+.nav__link-inner > span:last-child {
+  color: var(--clay);
+}
+
+.nav__right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 1;
+}
+
+.nav__cta {
+  padding: 0.85rem 1.5rem;
+  font-size: 0.68rem;
+}
+.nav.is-over .nav__cta {
+  background: var(--bone);
+  color: var(--ink);
+}
+
+/* ---------- burger ---------- */
+
+.nav__burger {
+  display: none;
+  width: 44px;
+  height: 44px;
+  position: relative;
+}
+.nav__burger span {
+  position: absolute;
+  left: 11px;
+  width: 22px;
+  height: 1px;
+  background: currentColor;
+  transition: transform 0.5s var(--ease-in-out), opacity 0.3s;
+}
+.nav__burger span:nth-child(1) {
+  top: 19px;
+}
+.nav__burger span:nth-child(2) {
+  top: 25px;
+}
+.nav__burger.is-open span:nth-child(1) {
+  transform: translateY(3px) rotate(45deg);
+}
+.nav__burger.is-open span:nth-child(2) {
+  transform: translateY(-3px) rotate(-45deg);
+}
+
+/* ---------- fullscreen menu ---------- */
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  background: var(--ink);
+  color: var(--bone);
+  display: flex;
+  align-items: center;
+  will-change: clip-path;
+}
+
+.menu__grid {
+  width: 100%;
+  max-width: 1560px;
+  margin-inline: auto;
+  padding: 8rem var(--gutter) 3rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3rem;
+  align-items: end;
+}
+
+.menu__line {
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+
+.menu__list a {
+  display: flex;
+  align-items: baseline;
+  gap: 1.2rem;
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(2.4rem, 7vw, 5.5rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  transition: color 0.45s var(--ease-out), padding-left 0.55s var(--ease-out);
+  will-change: transform;
+}
+.menu__list a:hover {
+  color: var(--clay-soft);
+  padding-left: 0.6rem;
+}
+
+.menu__index {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  color: rgba(246, 242, 236, 0.4);
+}
+
+.menu__aside {
+  display: grid;
+  gap: 2rem;
+  min-width: 200px;
+  color: rgba(246, 242, 236, 0.75);
+}
+.menu__aside .eyebrow {
+  color: rgba(246, 242, 236, 0.4);
+  margin-bottom: 0.4rem;
+}
+.menu__aside .body-sm {
+  color: rgba(246, 242, 236, 0.8);
+}
+.menu__social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 1080px) {
+  .nav__links {
+    display: none;
+  }
+  .nav__burger {
+    display: block;
+  }
+}
+
+@media (max-width: 720px) {
+  .nav__cta-wrap {
+    display: none;
+  }
+  .menu__grid {
+    grid-template-columns: 1fr;
+    align-content: center;
+    align-items: start;
+    gap: 3.5rem;
+  }
+  .menu__aside {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .menu__social {
+    grid-column: 1 / -1;
+  }
+}

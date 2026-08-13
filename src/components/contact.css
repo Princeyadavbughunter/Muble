@@ -1,0 +1,179 @@
+.contact {
+  background: var(--bone);
+  border-top: 1px solid var(--line-soft);
+}
+
+.contact__head {
+  display: grid;
+  gap: clamp(1.2rem, 3vh, 2rem);
+  margin-bottom: clamp(2.5rem, 7vh, 5rem);
+}
+
+.contact__title {
+  font-size: clamp(2.8rem, 9vw, 8.5rem);
+}
+
+.contact__line-2 {
+  padding-left: clamp(0px, 14vw, 14rem);
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+
+/* the sticky lives on the wrapper — Parallax owns the inner element's
+   position, so it cannot be sticky itself */
+.contact__media-wrap {
+  position: sticky;
+  top: clamp(6rem, 14vh, 9rem);
+}
+
+.contact__media {
+  border-radius: var(--radius);
+  aspect-ratio: 3 / 4;
+  background: var(--sand);
+}
+.contact__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contact__panel {
+  display: grid;
+  gap: clamp(2rem, 5vh, 3rem);
+}
+
+.contact__lede {
+  max-width: 46ch;
+}
+
+/* ---------- form ---------- */
+
+.contact__form {
+  display: grid;
+  gap: clamp(1.4rem, 3vh, 2rem);
+  justify-items: start;
+}
+
+.field {
+  position: relative;
+  width: 100%;
+  padding-top: 1.5rem;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  font: inherit;
+  font-weight: 300;
+  color: var(--ink);
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0.35rem 0 0.7rem;
+  resize: none;
+}
+
+.field label {
+  position: absolute;
+  left: 0;
+  top: 1.55rem;
+  color: var(--muted);
+  font-weight: 300;
+  pointer-events: none;
+  transition: transform 0.45s var(--ease-out), font-size 0.45s var(--ease-out),
+    letter-spacing 0.45s var(--ease-out), color 0.45s var(--ease-out);
+  transform-origin: left top;
+}
+
+.field input:focus + label,
+.field input:not(:placeholder-shown) + label,
+.field textarea:focus + label,
+.field textarea:not(:placeholder-shown) + label {
+  transform: translateY(-1.55rem);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--clay);
+}
+
+.field__line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--line);
+}
+
+.field__line::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.65s var(--ease-out);
+}
+
+.field:focus-within .field__line::after {
+  transform: scaleX(1);
+}
+
+/* ---------- sent state ---------- */
+
+.contact__done {
+  display: grid;
+  gap: 1rem;
+  justify-items: start;
+  padding: clamp(1.6rem, 4vw, 2.4rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bone-2);
+}
+
+/* ---------- direct details ---------- */
+
+.contact__direct {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  border-top: 1px solid var(--line);
+  padding-top: clamp(1.4rem, 3vh, 2rem);
+}
+
+.contact__direct .eyebrow {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.contact__mail {
+  font-family: var(--serif);
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  border-bottom: 1px solid var(--line);
+  transition: border-color 0.45s var(--ease-out), color 0.45s var(--ease-out);
+}
+.contact__mail:hover {
+  color: var(--clay);
+  border-color: var(--clay);
+}
+
+@media (max-width: 900px) {
+  .contact__grid {
+    grid-template-columns: 1fr;
+  }
+  .contact__media-wrap {
+    position: relative;
+    top: auto;
+  }
+  .contact__media {
+    aspect-ratio: 16 / 10;
+  }
+  .contact__line-2 {
+    padding-left: 1.5rem;
+  }
+}

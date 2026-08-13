@@ -1,0 +1,307 @@
+/* ===========================================================
+   Muble — design tokens & base layer
+   =========================================================== */
+
+:root {
+  /* palette — warm bone, deep ink, clay accent */
+  --bone: #f6f2ec;
+  --bone-2: #efe9e0;
+  --sand: #e3dad0;
+  --ink: #17130f;
+  --ink-2: #2a231d;
+  --muted: #8a8078;
+  --clay: #a9714b;
+  --clay-soft: #c08e69;
+  --line: rgba(23, 19, 15, 0.12);
+  --line-soft: rgba(23, 19, 15, 0.07);
+
+  /* type */
+  --serif: 'Cormorant Garamond', 'Times New Roman', serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* rhythm */
+  --gutter: clamp(1.25rem, 4vw, 4.5rem);
+  --section-y: clamp(6rem, 14vh, 12rem);
+  --radius: 2px;
+
+  /* motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Lenis drives scroll — native smooth would fight it */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background: var(--bone);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* the site fades in only once the preloader has run */
+body.is-loading {
+  overflow: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--bone);
+}
+
+/* ---------- typography scale ---------- */
+
+.display {
+  font-family: var(--serif);
+  font-weight: 300;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  font-size: clamp(3rem, 11vw, 11rem);
+}
+
+.h1 {
+  font-family: var(--serif);
+  font-weight: 300;
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  font-size: clamp(2.4rem, 6.4vw, 6rem);
+}
+
+.h2 {
+  font-family: var(--serif);
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  font-size: clamp(1.9rem, 4vw, 3.4rem);
+}
+
+.h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: 1.2;
+  font-size: clamp(1.3rem, 2.2vw, 1.9rem);
+}
+
+.italic {
+  font-style: italic;
+  color: var(--clay);
+}
+
+/* Cormorant ships old-style figures, where 1 reads as a capital I.
+   Anything that shows digits in the serif opts back into lining figures. */
+.lining-nums {
+  font-variant-numeric: lining-nums;
+  font-feature-settings: 'lnum' 1;
+}
+
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.body-lg {
+  font-size: clamp(1rem, 1.25vw, 1.15rem);
+  line-height: 1.75;
+  font-weight: 300;
+  color: var(--ink-2);
+}
+
+.body-sm {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  font-weight: 300;
+  color: var(--muted);
+}
+
+/* ---------- layout helpers ---------- */
+
+.section {
+  padding-block: var(--section-y);
+  padding-inline: var(--gutter);
+  position: relative;
+}
+
+.wrap {
+  max-width: 1560px;
+  margin-inline: auto;
+  width: 100%;
+}
+
+.rule {
+  height: 1px;
+  background: var(--line);
+  width: 100%;
+  transform-origin: left;
+}
+
+/* ---------- shared: link with animated underline ---------- */
+
+.link-under {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 2px;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.link-under::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(1);
+  transform-origin: right;
+  transition: transform 0.55s var(--ease-out);
+}
+.link-under:hover::after {
+  transform: scaleX(0);
+}
+
+/* ---------- shared: filled pill button ---------- */
+
+.btn {
+  --btn-bg: var(--ink);
+  --btn-fg: var(--bone);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 1.05rem 2.1rem;
+  border-radius: 999px;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--clay);
+  transform: translateY(101%);
+  transition: transform 0.6s var(--ease-out);
+}
+.btn:hover::before {
+  transform: translateY(0);
+}
+.btn .btn-arrow {
+  transition: transform 0.5s var(--ease-out);
+}
+.btn:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+.btn--ghost {
+  --btn-bg: transparent;
+  --btn-fg: var(--ink);
+  border: 1px solid var(--line);
+}
+.btn--ghost:hover {
+  color: var(--bone);
+  border-color: var(--clay);
+}
+
+/* ---------- media frame used across sections ---------- */
+
+.frame {
+  position: relative;
+  overflow: hidden;
+  background: var(--sand);
+  border-radius: var(--radius);
+}
+.frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+/* ---------- accessibility ---------- */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--clay);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

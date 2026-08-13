@@ -1,0 +1,97 @@
+.pre {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  pointer-events: none;
+}
+
+.pre__sheet,
+.pre__panel {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+/* revealed under the ink panel, lifts a beat later */
+.pre__sheet {
+  background: var(--clay);
+}
+
+.pre__panel {
+  background: var(--ink);
+  color: var(--bone);
+  display: flex;
+  align-items: flex-end;
+}
+
+.pre__inner {
+  width: 100%;
+  padding: var(--gutter);
+  display: grid;
+  gap: clamp(2rem, 6vh, 4rem);
+}
+
+.pre__brand {
+  display: flex;
+  align-items: baseline;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.pre__mark {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.pre__brand .eyebrow {
+  color: rgba(246, 242, 236, 0.5);
+}
+
+.pre__word {
+  position: relative;
+  font-family: var(--serif);
+  font-size: clamp(2.6rem, 9vw, 7rem);
+  line-height: 1.1;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: rgba(246, 242, 236, 0.92);
+  height: 1.1em;
+  overflow: hidden;
+}
+
+/* stacked, so the outgoing and incoming words can cross-fade in place */
+.pre__word span {
+  position: absolute;
+  inset: 0;
+  display: inline-block;
+}
+
+.pre__foot {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.pre__bar {
+  flex: 1;
+  height: 1px;
+  background: rgba(246, 242, 236, 0.2);
+  overflow: hidden;
+}
+
+.pre__bar-fill {
+  display: block;
+  height: 100%;
+  background: var(--bone);
+  transform-origin: left;
+  will-change: transform;
+}
+
+.pre__count {
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  font-variant-numeric: tabular-nums;
+  color: rgba(246, 242, 236, 0.7);
+}

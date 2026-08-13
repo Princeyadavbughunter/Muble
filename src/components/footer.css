@@ -1,0 +1,150 @@
+.footer {
+  background: var(--ink);
+  color: var(--bone);
+  padding: clamp(4rem, 12vh, 8rem) var(--gutter) clamp(1.5rem, 4vh, 2.5rem);
+  overflow: hidden;
+}
+
+.footer__inner {
+  display: grid;
+  gap: clamp(3rem, 8vh, 5rem);
+}
+
+.footer__top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: start;
+}
+
+.footer__say {
+  display: grid;
+  gap: 2rem;
+  max-width: 30ch;
+}
+
+.footer__say-text {
+  line-height: 1.35;
+}
+
+/* ---------- subscribe ---------- */
+
+.footer__sub {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  border-bottom: 1px solid rgba(246, 242, 236, 0.25);
+  padding-bottom: 0.7rem;
+  transition: border-color 0.5s var(--ease-out);
+}
+.footer__sub:focus-within {
+  border-bottom-color: var(--clay-soft);
+}
+
+.footer__sub input {
+  flex: 1;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: var(--bone);
+  background: transparent;
+  border: none;
+  outline: none;
+}
+.footer__sub input::placeholder {
+  color: rgba(246, 242, 236, 0.42);
+}
+
+.footer__sub button {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(246, 242, 236, 0.28);
+  display: grid;
+  place-items: center;
+  transition: background 0.45s var(--ease-out), color 0.45s var(--ease-out),
+    border-color 0.45s var(--ease-out);
+}
+.footer__sub button:hover {
+  background: var(--bone);
+  color: var(--ink);
+  border-color: var(--bone);
+}
+
+/* ---------- link columns ---------- */
+
+.footer__cols {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 3rem);
+}
+
+.footer__col .eyebrow {
+  color: rgba(246, 242, 236, 0.4);
+  margin-bottom: 1rem;
+}
+
+.footer__col ul {
+  list-style: none;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.footer__col a {
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: rgba(246, 242, 236, 0.82);
+  transition: color 0.4s var(--ease-out), padding-left 0.5s var(--ease-out);
+}
+.footer__col a:hover {
+  color: var(--clay-soft);
+  padding-left: 0.35rem;
+}
+
+/* ---------- oversized wordmark ---------- */
+
+.footer__mark {
+  font-family: var(--serif);
+  font-weight: 300;
+  line-height: 0.86;
+  letter-spacing: -0.03em;
+  /* sized to run the full width of the wrap — six characters need roughly
+     twice the vw of the twelve-character lockup this replaced */
+  font-size: clamp(3rem, 36vw, 38rem);
+  white-space: nowrap;
+  color: rgba(246, 242, 236, 0.94);
+  border-bottom: 1px solid rgba(246, 242, 236, 0.16);
+  padding-bottom: 0.08em;
+}
+
+.footer__mark .italic {
+  color: var(--clay-soft);
+}
+
+/* ---------- bottom bar ---------- */
+
+.footer__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.footer__bar .body-sm {
+  color: rgba(246, 242, 236, 0.5);
+}
+
+.footer__top-link {
+  color: rgba(246, 242, 236, 0.85);
+}
+
+@media (max-width: 860px) {
+  .footer__top {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .footer__cols {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+}

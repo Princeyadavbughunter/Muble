@@ -1,0 +1,105 @@
+.quote {
+  background: var(--bone-2);
+  border-top: 1px solid var(--line-soft);
+}
+
+.quote__inner {
+  display: grid;
+  gap: clamp(1.8rem, 5vh, 3.2rem);
+  justify-items: center;
+  text-align: center;
+}
+
+.quote__stage {
+  width: 100%;
+  /* a rem cap, not ch — ch here resolves against the body sans, not the
+     much larger serif the quote is actually set in */
+  max-width: min(100%, 46rem);
+  min-height: clamp(220px, 30vh, 340px);
+  display: grid;
+  align-items: center;
+}
+
+.quote__block {
+  display: grid;
+  gap: clamp(1.4rem, 3vh, 2.2rem);
+  justify-items: center;
+}
+
+.quote__text {
+  font-size: clamp(1.7rem, 3.6vw, 3rem);
+  font-weight: 300;
+  line-height: 1.18;
+  text-wrap: balance;
+}
+
+.quote__by {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.quote__name {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* ---------- controls ---------- */
+
+.quote__controls {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+.quote__arrow {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+  font-size: 0.95rem;
+  transition: background 0.45s var(--ease-out), color 0.45s var(--ease-out),
+    border-color 0.45s var(--ease-out);
+}
+.quote__arrow:hover {
+  background: var(--ink);
+  color: var(--bone);
+  border-color: var(--ink);
+}
+
+.quote__dots {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.quote__dot {
+  padding: 0.6rem 0;
+}
+
+.quote__dot-track {
+  display: block;
+  width: 34px;
+  height: 1px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.quote__dot.is-active .quote__dot-track {
+  background: rgba(23, 19, 15, 0.18);
+}
+
+.quote__dot-fill {
+  display: block;
+  height: 100%;
+  background: var(--ink);
+  transform-origin: left;
+}
+
+@media (max-width: 640px) {
+  .quote__stage {
+    min-height: 300px;
+  }
+}

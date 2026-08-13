@@ -1,0 +1,61 @@
+.cursor {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  pointer-events: none;
+}
+
+.cursor__ring,
+.cursor__dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+}
+
+.cursor__ring-shape {
+  width: 84px;
+  height: 84px;
+  margin: -42px 0 0 -42px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  /* inverts against whatever it sits on, so one cursor works on
+     the bone sections and the ink ones alike */
+  mix-blend-mode: difference;
+}
+
+/* the filled "View" state carries its own colour instead */
+.cursor__ring-shape.is-solid {
+  mix-blend-mode: normal;
+}
+
+.cursor__label {
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--bone);
+}
+
+.cursor__dot {
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  border-radius: 50%;
+  background: #fff;
+  mix-blend-mode: difference;
+}
+
+/* the real pointer is hidden only where the custom one can follow it */
+@media (hover: hover) and (pointer: fine) {
+  body.has-cursor,
+  body.has-cursor * {
+    cursor: none !important;
+  }
+  body.has-cursor input,
+  body.has-cursor textarea {
+    cursor: text !important;
+  }
+}

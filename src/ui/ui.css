@@ -1,0 +1,23 @@
+.magnetic {
+  display: inline-flex;
+}
+
+/* SplitText — word masks */
+
+.split {
+  display: block;
+}
+
+.split__word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  /* keep descenders (g, y, p) from being clipped by the mask */
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+
+.split__inner {
+  display: inline-block;
+  will-change: transform;
+}
