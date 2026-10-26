@@ -1,0 +1,245 @@
+/* ===========================================================
+   Client Logos Section — Parallax Slide-Over
+   (Matching Image 1 scroll curtain + Image 2 2x4 logo cards)
+   =========================================================== */
+
+.client-logos-section {
+  position: relative;
+  z-index: 2;
+  background-color: #ffffff;
+  color: #17130f;
+  /* Soft elevation shadow as it rolls over the hero section */
+  box-shadow: 0 -20px 50px rgba(0, 0, 0, 0.08);
+  padding: clamp(4rem, 8vh, 7rem) var(--gutter);
+  width: 100%;
+}
+
+
+.client-logos-container {
+  max-width: 1380px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 5vh, 4rem);
+}
+
+/* ---------- Header ---------- */
+
+.client-logos-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  max-width: 680px;
+}
+
+.client-logos-eyebrow {
+  font-family: 'Public Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--clay);
+}
+
+.client-logos-title {
+  font-family: 'Public Sans', sans-serif;
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  color: rgb(33, 33, 33);
+  margin: 0;
+}
+
+.client-logos-subtitle {
+  font-family: 'Public Sans', sans-serif;
+  font-size: clamp(0.95rem, 1.2vw, 1.08rem);
+  line-height: 1.6;
+  color: #66605a;
+  margin: 0;
+}
+
+/* ---------- 2x4 Grid (Exact Image 2 Specification) ---------- */
+
+.client-logos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(14px, 2vw, 24px);
+  width: 100%;
+}
+
+.client-logo-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.75rem;
+}
+
+/* Neutral grey tile matching Image 2 */
+.client-logo-badge {
+  background-color: #dcdcdc;
+  border-radius: 6px;
+  min-height: 115px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem;
+  transition: all 0.25s var(--ease-out);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.client-logo-card:hover .client-logo-badge {
+  background-color: #d2d2d2;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Specific Logo Typography styling */
+.client-logo-text {
+  font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #17130f;
+  line-height: 1;
+  text-align: center;
+  user-select: none;
+}
+
+.client-logo-ifc {
+  font-size: 1.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.client-logo-wave {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.client-logo-nexa {
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+}
+
+.client-logo-emaar {
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.client-logo-indigo {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.client-logo-medanta {
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.client-logo-prag {
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.client-logo-nirvasa {
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* Sub-info below each tile */
+.client-logo-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding-inline: 0.2rem;
+}
+
+.client-logo-name {
+  font-family: 'Public Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgb(40, 40, 40);
+}
+
+.client-logo-cat {
+  font-family: 'Public Sans', sans-serif;
+  font-size: 0.72rem;
+  color: #888078;
+}
+
+/* ---------- Foot Stats ---------- */
+
+.client-logos-foot {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  padding-top: 1.8rem;
+  border-top: 1px solid rgba(23, 19, 15, 0.08);
+}
+
+.client-stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.client-stat-num {
+  font-family: 'Public Sans', sans-serif;
+  font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1;
+  color: rgb(33, 33, 33);
+}
+
+.client-stat-label {
+  font-family: 'Public Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #77706a;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.client-stat-divider {
+  width: 1px;
+  height: 38px;
+  background-color: rgba(23, 19, 15, 0.1);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1024px) {
+  .client-logos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .client-logos-section {
+    padding-block: 3.5rem;
+  }
+  .client-logos-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .client-logo-badge {
+    min-height: 85px;
+    padding: 1rem 0.5rem;
+  }
+  .client-logo-text {
+    font-size: 1.35rem;
+  }
+  .client-logos-foot {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+  }
+  .client-stat-divider {
+    display: none;
+  }
+}

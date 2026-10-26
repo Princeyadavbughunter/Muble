@@ -1,85 +1,77 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { ctaImage, ctaAlt } from '../data/site'
-import SplitText from '../ui/SplitText'
-import Reveal from '../ui/Reveal'
-import Parallax from '../ui/Parallax'
-import Magnetic from '../ui/Magnetic'
-import './contact.css'
+﻿import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import "./contact.css";
 
 const FIELDS = [
-  { name: 'name', label: 'Your name', type: 'text', autoComplete: 'name' },
-  { name: 'email', label: 'Email', type: 'email', autoComplete: 'email' },
-  { name: 'place', label: 'Where is the room?', type: 'text', autoComplete: 'address-level2' },
-]
+  { name: "name", label: "Your name", type: "text", autoComplete: "name" },
+  { name: "email", label: "Email", type: "email", autoComplete: "email" },
+  { name: "place", label: "Where is the room?", type: "text", autoComplete: "address-level2" },
+  { name: "message", label: "What are you hoping for?", type: "text", autoComplete: "off" },
+];
 
 export default function Contact() {
-  const [sent, setSent] = useState(false)
+  const [sent, setSent] = useState(false);
 
-  // no backend here — wire this to your endpoint when you have one
   const onSubmit = (e) => {
-    e.preventDefault()
-    setSent(true)
-  }
+    e.preventDefault();
+    setSent(true);
+  };
 
   return (
-    <section className="section contact" id="contact">
-      <div className="wrap">
-        <div className="contact__head">
-          <Reveal>
-            <span className="eyebrow">Contact</span>
-          </Reveal>
-          <h2 className="display contact__title">
-            <SplitText text="Let’s begin" />
-            <SplitText text="with a room" className="contact__line-2 italic" />
+    <section className="contact-section" id="contact">
+      <div className="contact-wrap">
+
+        {/* Section Header */}
+        <div className="contact-header">
+          <span className="contact-eyebrow">CONTACT</span>
+          <h2 className="contact-title">
+            <span className="contact-title-line1">Let’s begin</span>
+            <span className="contact-title-line2">with a room</span>
           </h2>
         </div>
 
-        <div className="contact__grid">
-          <div className="contact__media-wrap">
-            <Parallax className="contact__media" amount={0.1}>
-              <img src={ctaImage} alt={ctaAlt} />
-            </Parallax>
+        {/* 2-Column Grid */}
+        <div className="contact-grid">
+
+          {/* Left: Sticky Living Room Photo */}
+          <div className="contact-media-wrap">
+            <div className="contact-media">
+              <img
+                src="/cta_living.jpg"
+                alt="A warm living room with coffee table and modern seating"
+                loading="lazy"
+              />
+            </div>
           </div>
 
-          <div className="contact__panel">
-            <Reveal>
-              <p className="body-lg contact__lede">
-                Tell us a little about the space. We reply to every enquiry
-                within two working days, and the first conversation costs
-                nothing.
-              </p>
-            </Reveal>
+          {/* Right: Panel & Form */}
+          <div className="contact-panel">
+            <p className="contact-lede">
+              Tell us a little about the space. We reply to every enquiry within two working days, and the first conversation costs nothing.
+            </p>
 
             <AnimatePresence mode="wait">
               {sent ? (
                 <motion.div
                   key="done"
-                  className="contact__done"
-                  initial={{ opacity: 0, y: 16 }}
+                  className="contact-done"
+                  initial={{ opacity: 0, y: 14 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{ duration: 0.5 }}
                 >
-                  <h3 className="h2">Thank you.</h3>
-                  <p className="body-lg">
-                    Your note is with the studio. Expect a reply from Nadia or
-                    Tom within two working days.
+                  <h3 className="contact-done-title">Thank you.</h3>
+                  <p className="contact-done-desc">
+                    Your note is with the studio. Expect a reply within two working days.
                   </p>
-                  <button className="link-under" onClick={() => setSent(false)}>
-                    Send another
+                  <button className="contact-btn-reset" onClick={() => setSent(false)}>
+                    Send another enquiry
                   </button>
                 </motion.div>
               ) : (
-                <motion.form
-                  key="form"
-                  className="contact__form"
-                  onSubmit={onSubmit}
-                  exit={{ opacity: 0, y: -12 }}
-                  transition={{ duration: 0.4 }}
-                >
-                  {FIELDS.map((f, i) => (
-                    <Reveal key={f.name} delay={0.04 * i} className="field">
+                <form className="contact-form" onSubmit={onSubmit}>
+                  {FIELDS.map((f) => (
+                    <div key={f.name} className="contact-field">
                       <input
                         id={f.name}
                         name={f.name}
@@ -89,53 +81,43 @@ export default function Contact() {
                         required
                       />
                       <label htmlFor={f.name}>{f.label}</label>
-                      <span className="field__line" />
-                    </Reveal>
+                      <span className="contact-field-line" />
+                    </div>
                   ))}
 
-                  <Reveal delay={0.16} className="field field--area">
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows="3"
-                      placeholder=" "
-                      required
-                    />
-                    <label htmlFor="message">What are you hoping for?</label>
-                    <span className="field__line" />
-                  </Reveal>
-
-                  <Reveal delay={0.2}>
-                    <Magnetic strength={0.2}>
-                      <button className="btn" type="submit">
-                        Send enquiry
-                        <span className="btn-arrow">→</span>
-                      </button>
-                    </Magnetic>
-                  </Reveal>
-                </motion.form>
+                  <div className="contact-submit-wrap">
+                    <button className="contact-btn-submit" type="submit">
+                      <span>SEND ENQUIRY</span>
+                      <span className="contact-btn-arrow">→</span>
+                    </button>
+                  </div>
+                </form>
               )}
             </AnimatePresence>
 
-            <div className="contact__direct">
-              <div>
-                <p className="eyebrow">Or write to us</p>
-                <a className="contact__mail" href="mailto:hello@muble.studio">
+            {/* Direct Studio Contact Info */}
+            <div className="contact-direct">
+              <div className="contact-direct-col">
+                <span className="contact-direct-eyebrow">OR WRITE TO US</span>
+                <a className="contact-mail-link" href="mailto:hello@muble.studio">
                   hello@muble.studio
                 </a>
               </div>
-              <div>
-                <p className="eyebrow">Studio</p>
-                <p className="body-sm">
-                  18 Prescott Row, London E1 6QL
-                  <br />
+
+              <div className="contact-direct-col">
+                <span className="contact-direct-eyebrow">STUDIO</span>
+                <p className="contact-studio-address">
+                  18 Prescott Row, London E1 6QL<br />
                   Mon–Fri, 9–6
                 </p>
               </div>
             </div>
+
           </div>
+
         </div>
+
       </div>
     </section>
-  )
+  );
 }

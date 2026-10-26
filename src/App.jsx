@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+﻿import { useEffect, useState } from 'react'
 import { motion, useScroll, useSpring } from 'framer-motion'
 
 import useLenis from './hooks/useLenis'
@@ -6,12 +6,11 @@ import Preloader from './components/Preloader'
 import Cursor from './components/Cursor'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
-import Marquee from './components/Marquee'
-import Philosophy from './components/Philosophy'
-import Collections from './components/Collections'
-import Projects from './components/Projects'
-import Process from './components/Process'
-import Testimonials from './components/Testimonials'
+import ClientLogos from './components/ClientLogos'
+import Capabilities from './components/Capabilities'
+import CityProjects from './components/CityProjects'
+import Team from './components/Team'
+import Clientele from './components/Clientele'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import './styles/app.css'
@@ -20,16 +19,7 @@ const prefersReducedMotion = () =>
   typeof window !== 'undefined' &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-const MARQUEE = [
-  'Solid oak',
-  'Undyed linen',
-  'Hand-finished',
-  'Made in Kent',
-  'Built to outlast us',
-]
-
 export default function App() {
-  // with reduced motion there is no curtain, so the site is ready immediately
   const [ready, setReady] = useState(() => prefersReducedMotion())
 
   const { scrollYProgress } = useScroll()
@@ -73,14 +63,11 @@ export default function App() {
         aria-busy={!ready}
       >
         <Hero ready={ready} />
-
-        <Marquee items={MARQUEE} />
-
-        <Philosophy />
-        <Collections />
-        <Projects />
-        <Process />
-        <Testimonials />
+        <ClientLogos />
+        <Capabilities />
+        <CityProjects />
+        <Team />
+        <Clientele />
         <Contact />
       </main>
 

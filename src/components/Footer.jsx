@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+﻿import { motion } from 'framer-motion'
 import Reveal from '../ui/Reveal'
 import Magnetic from '../ui/Magnetic'
 import './footer.css'
@@ -64,16 +64,19 @@ export default function Footer() {
           </nav>
         </div>
 
-        <motion.div
-          className="footer__mark"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-5%' }}
-          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-          aria-hidden="true"
-        >
-          Muble<span className="italic">.</span>
-        </motion.div>
+        {/* Muble wordmark — bottom 20% hidden/clipped at the line */}
+        <div className="footer__mark-wrap">
+          <motion.div
+            className="footer__mark"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-5%' }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            aria-hidden="true"
+          >
+            Muble<span className="italic">.</span>
+          </motion.div>
+        </div>
 
         <div className="footer__bar">
           <span className="body-sm">© {new Date().getFullYear()} Muble Ltd.</span>

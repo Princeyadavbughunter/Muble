@@ -1,4 +1,4 @@
-.footer {
+﻿.footer {
   background: var(--ink);
   color: var(--bone);
   padding: clamp(4rem, 12vh, 8rem) var(--gutter) clamp(1.5rem, 4vh, 2.5rem);
@@ -7,7 +7,7 @@
 
 .footer__inner {
   display: grid;
-  gap: clamp(3rem, 8vh, 5rem);
+  gap: clamp(2.5rem, 6vh, 4rem);
 }
 
 .footer__top {
@@ -101,20 +101,32 @@
   padding-left: 0.35rem;
 }
 
-/* ---------- oversized wordmark ---------- */
+/* ---------- oversized wordmark — bottom 10% clipped at the line ---------- */
+
+.footer__mark-wrap {
+  position: relative;
+  width: 100%;
+  margin-top: clamp(1rem, 3vh, 2rem);
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(246, 242, 236, 0.18);
+  overflow: hidden;
+}
 
 .footer__mark {
   font-family: var(--serif);
   font-weight: 300;
   line-height: 0.86;
   letter-spacing: -0.03em;
-  /* sized to run the full width of the wrap — six characters need roughly
-     twice the vw of the twelve-character lockup this replaced */
   font-size: clamp(3rem, 36vw, 38rem);
   white-space: nowrap;
   color: rgba(246, 242, 236, 0.94);
-  border-bottom: 1px solid rgba(246, 242, 236, 0.16);
-  padding-bottom: 0.08em;
+  display: block;
+  /* Bottom 10% completely clipped/hidden */
+  clip-path: inset(0 0 10% 0);
+  /* Pulls bottom border up to exact 90% line */
+  margin-bottom: -8.5%;
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 .footer__mark .italic {

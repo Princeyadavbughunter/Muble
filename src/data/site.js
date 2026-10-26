@@ -142,17 +142,85 @@ export const philosophyImages = {
   wideAlt: 'A close view of striped linen bedding and a tan leather cushion',
 }
 
-export const heroImage = img('photo-1631679706909-1844bbd07221', 2200)
+export const heroImage = '/hero_wood_slats.jpg'
 export const heroAlt =
-  'A calm cream living room with rattan mirrors and low seating'
+  'Warm architectural interior with vertical oak acoustic slats and minimalist luxury seating'
 
 export const ctaImage = img('photo-1618221195710-dd6b41faaea6', 1400)
 export const ctaAlt = 'A warm living room in late afternoon light'
 
+export const capabilities = [
+  {
+    id: 'bareshell',
+    title: 'Bareshell Interior',
+    slug: 'bareshell-interior',
+    tagline: 'Raw to Turnkey Civil & Architectural Execution',
+    summary: 'Transforming structural bare shells into bespoke turnkey spaces. Complete MEP engineering, structural joinery, sound isolation, and high-precision architectural fitouts.',
+    metrics: [
+      { label: 'Delivered', val: '250K+ sq.ft' },
+      { label: 'Scope', val: 'Turnkey Civil' },
+      { label: 'Standard', val: 'Grade-A Prime' },
+    ],
+    image: '/bareshell_interior.jpg',
+    alt: 'Bareshell interior undergoing architectural transformation with concrete and oak fluted walls',
+  },
+  {
+    id: 'luxury-hotel',
+    title: 'Luxury Hotel Interior',
+    slug: 'luxury-hotel-interior',
+    tagline: 'Five-Star Hospitality Suites & Signature Lounges',
+    summary: 'Bespoke hotel environments that command presence. Acoustic fluted timber walls, integrated mood lighting, custom low seating, and master joinery for international luxury hospitality.',
+    metrics: [
+      { label: 'Suites', val: '40+ Completed' },
+      { label: 'Panelling', val: 'Acoustic Fluted' },
+      { label: 'Rating', val: '5-Star Hospitality' },
+    ],
+    image: '/hotel_interior.jpg',
+    alt: 'Luxury hotel lounge with warm vertical wood slats and marble table',
+  },
+  {
+    id: 'hospital',
+    title: 'Hospital Interior',
+    slug: 'hospital-interior',
+    tagline: 'Clinical Precision Meets Biophilic Healing Sanctuaries',
+    summary: 'Elevating healthcare architecture through tranquil biophilic design, curved timber contours, sterile-grade surfaces, and calming natural illumination that supports recovery.',
+    metrics: [
+      { label: 'Sterility', val: 'ISO Healthcare' },
+      { label: 'Design', val: 'Biophilic Healing' },
+      { label: 'Acoustics', val: 'Silent Recovery' },
+    ],
+    image: '/hospital_interior.jpg',
+    alt: 'Luxury hospital wellness suite with blonde oak curves and indoor lush courtyard',
+  },
+  {
+    id: 'modular-furniture',
+    title: 'Innovative Modular Furniture',
+    slug: 'modular-furniture',
+    tagline: 'Precision Joinery & Reconfigurable Architectural Systems',
+    summary: 'Solid oak and fluted walnut modular systems built to adapt with your life. Precision magnetic joinery, integrated ambient lighting, and bespoke ergonomic workstations built to outlast.',
+    metrics: [
+      { label: 'Flexibility', val: 'Infinite Modular' },
+      { label: 'Timber', val: 'Solid English Oak' },
+      { label: 'Craft', val: 'Kent Workshop' },
+    ],
+    image: '/modular_furniture.jpg',
+    alt: 'Innovative modular workstation with illuminated oak shelving and fluted cabinets',
+  },
+]
+
 export const navLinks = [
-  { label: 'Collections', href: '#collections' },
+  { label: 'Home', href: '#top' },
+  {
+    label: 'Our Capabilities',
+    href: '#capabilities',
+    isDropdown: true,
+    children: [
+      { label: 'Bareshell Interior', href: '#capabilities', id: 'bareshell' },
+      { label: 'Luxury Hotel Interior', href: '#capabilities', id: 'luxury-hotel' },
+      { label: 'Hospital Interior', href: '#capabilities', id: 'hospital' },
+      { label: 'Innovative Modular Furniture', href: '#capabilities', id: 'modular-furniture' },
+    ],
+  },
+  { label: 'About us', href: '#about' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Process', href: '#process' },
-  { label: 'Studio', href: '#philosophy' },
-  { label: 'Contact', href: '#contact' },
 ]

@@ -1,0 +1,142 @@
+﻿/* ============================================================
+   CLIENTELE SECTION — Full Bleed, Transparent/Clean, Right-to-Left Ticker
+   ============================================================ */
+
+.clientele-section {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  background: #ffffff;
+  padding: 80px 0 90px;
+  overflow: hidden;
+}
+
+/* Header — aligned with standard content container */
+.clientele-header-wrap {
+  width: 100%;
+  max-width: 1380px;
+  margin: 0 auto 44px;
+  padding: 0 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.clientele-eyebrow {
+  font-family: "Public Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #e05638; /* vibrant clientele coral red */
+}
+
+.clientele-title {
+  font-family: "Public Sans", sans-serif;
+  font-size: clamp(32px, 3.5vw, 48px);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #1a1a1a;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+/* Full Width Ticker Wrapper with Edge Fade */
+.clientele-ticker-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  overflow: hidden;
+  position: relative;
+  /* Smooth edge fade out at screen edges */
+  mask-image: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 6%, rgba(0,0,0,1) 94%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 6%, rgba(0,0,0,1) 94%, rgba(0,0,0,0) 100%);
+}
+
+/* Marquee Track */
+.clientele-marquee-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  gap: 68px;
+  will-change: transform;
+}
+
+/* Row 1 — Right to Left */
+.track-row-1 {
+  animation: marqueeRightToLeft 32s linear infinite;
+}
+
+/* Row 2 — Right to Left (slightly different speed for organic feel) */
+.track-row-2 {
+  animation: marqueeRightToLeft 28s linear infinite;
+}
+
+/* Pause on hover so users can easily view any logo */
+.clientele-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeRightToLeft {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-33.333333%, 0, 0);
+  }
+}
+
+/* Logo Box Item */
+.clientele-logo-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 12px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), filter 0.25s ease;
+  filter: grayscale(0.15) opacity(0.92);
+}
+
+.clientele-logo-box:hover {
+  transform: translateY(-4px) scale(1.08);
+  filter: grayscale(0) opacity(1);
+}
+
+.client-logo-item {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+
+/* ── Responsive ── */
+@media (max-width: 960px) {
+  .clientele-section {
+    padding: 60px 0 70px;
+  }
+  .clientele-header-wrap {
+    padding: 0 24px;
+    margin-bottom: 32px;
+  }
+  .clientele-ticker-wrapper {
+    gap: 28px;
+  }
+  .clientele-marquee-track {
+    gap: 48px;
+  }
+}
+
+@media (max-width: 600px) {
+  .clientele-section {
+    padding: 48px 0 60px;
+  }
+  .clientele-header-wrap {
+    padding: 0 18px;
+    margin-bottom: 24px;
+  }
+  .clientele-marquee-track {
+    gap: 36px;
+  }
+}

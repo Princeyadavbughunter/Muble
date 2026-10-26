@@ -1,179 +1,326 @@
-.contact {
-  background: var(--bone);
-  border-top: 1px solid var(--line-soft);
+﻿/* ============================================================
+   CONTACT SECTION — Exact Editorial Living Room Aesthetic
+   ============================================================ */
+
+.contact-section {
+  position: relative;
+  z-index: 4;
+  background: #f6f3ee;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 100px 0 130px;
 }
 
-.contact__head {
+.contact-wrap {
+  width: 100%;
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+/* Header */
+.contact-header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: clamp(48px, 6vw, 80px);
+}
+
+.contact-eyebrow {
+  font-family: "Public Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #7a7670;
+}
+
+.contact-title {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.contact-title-line1 {
+  font-family: "Cinzel", "Playfair Display", Georgia, "Times New Roman", serif;
+  font-size: clamp(52px, 7.5vw, 102px);
+  font-weight: 400;
+  line-height: 1.02;
+  color: #1a1a1a;
+  letter-spacing: -0.02em;
+}
+
+.contact-title-line2 {
+  font-family: "Cinzel", "Playfair Display", Georgia, "Times New Roman", serif;
+  font-size: clamp(52px, 7.5vw, 102px);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.05;
+  color: #b67d56; /* warm caramel / terracotta brown from screenshot */
+  padding-left: clamp(2rem, 12vw, 14rem);
+  letter-spacing: -0.01em;
+}
+
+/* Grid */
+.contact-grid {
   display: grid;
-  gap: clamp(1.2rem, 3vh, 2rem);
-  margin-bottom: clamp(2.5rem, 7vh, 5rem);
-}
-
-.contact__title {
-  font-size: clamp(2.8rem, 9vw, 8.5rem);
-}
-
-.contact__line-2 {
-  padding-left: clamp(0px, 14vw, 14rem);
-}
-
-.contact__grid {
-  display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-  gap: clamp(2rem, 5vw, 5rem);
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(40px, 6vw, 90px);
   align-items: start;
 }
 
-/* the sticky lives on the wrapper — Parallax owns the inner element's
-   position, so it cannot be sticky itself */
-.contact__media-wrap {
+/* Left: Media */
+.contact-media-wrap {
   position: sticky;
-  top: clamp(6rem, 14vh, 9rem);
+  top: 96px;
 }
 
-.contact__media {
-  border-radius: var(--radius);
-  aspect-ratio: 3 / 4;
-  background: var(--sand);
+.contact-media {
+  width: 100%;
+  aspect-ratio: 3 / 3.9;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #e8e3dc;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.05);
 }
-.contact__media img {
+
+.contact-media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
-.contact__panel {
-  display: grid;
-  gap: clamp(2rem, 5vh, 3rem);
+/* Right: Panel */
+.contact-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
-.contact__lede {
-  max-width: 46ch;
+.contact-lede {
+  font-family: "Public Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #3b3834;
+  margin: 0;
+  max-width: 48ch;
 }
 
-/* ---------- form ---------- */
-
-.contact__form {
-  display: grid;
-  gap: clamp(1.4rem, 3vh, 2rem);
-  justify-items: start;
+/* Form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: 100%;
 }
 
-.field {
+.contact-field {
   position: relative;
   width: 100%;
-  padding-top: 1.5rem;
+  padding-top: 1.6rem;
 }
 
-.field input,
-.field textarea {
+.contact-field input {
   width: 100%;
-  font: inherit;
-  font-weight: 300;
-  color: var(--ink);
+  font-family: "Public Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #1a1a1a;
   background: transparent;
   border: none;
   outline: none;
-  padding: 0.35rem 0 0.7rem;
-  resize: none;
+  padding: 0.4rem 0 0.8rem;
 }
 
-.field label {
+.contact-field label {
   position: absolute;
   left: 0;
-  top: 1.55rem;
-  color: var(--muted);
+  top: 1.6rem;
+  color: #8c8882;
+  font-family: "Public Sans", sans-serif;
+  font-size: 15px;
   font-weight: 300;
   pointer-events: none;
-  transition: transform 0.45s var(--ease-out), font-size 0.45s var(--ease-out),
-    letter-spacing 0.45s var(--ease-out), color 0.45s var(--ease-out);
+  transition: transform 0.35s ease, font-size 0.35s ease, color 0.35s ease, letter-spacing 0.35s ease;
   transform-origin: left top;
 }
 
-.field input:focus + label,
-.field input:not(:placeholder-shown) + label,
-.field textarea:focus + label,
-.field textarea:not(:placeholder-shown) + label {
-  transform: translateY(-1.55rem);
-  font-size: 0.68rem;
-  letter-spacing: 0.2em;
+.contact-field input:focus + label,
+.contact-field input:not(:placeholder-shown) + label {
+  transform: translateY(-1.5rem);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--clay);
+  color: #b67d56;
 }
 
-.field__line {
+.contact-field-line {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
   height: 1px;
-  background: var(--line);
+  background: rgba(0, 0, 0, 0.18);
 }
 
-.field__line::after {
-  content: '';
+.contact-field-line::after {
+  content: "";
   position: absolute;
   inset: 0;
-  background: var(--ink);
+  background: #1a1a1a;
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.65s var(--ease-out);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.field:focus-within .field__line::after {
+.contact-field:focus-within .contact-field-line::after {
   transform: scaleX(1);
 }
 
-/* ---------- sent state ---------- */
+/* Submit Button */
+.contact-submit-wrap {
+  margin-top: 8px;
+}
 
-.contact__done {
+.contact-btn-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: "Public Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: #111111;
+  border: none;
+  border-radius: 100px;
+  padding: 15px 32px;
+  cursor: pointer;
+  transition: background 0.22s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-btn-submit:hover {
+  background: #282828;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.contact-btn-arrow {
+  font-size: 14px;
+  transition: transform 0.2s ease;
+}
+
+.contact-btn-submit:hover .contact-btn-arrow {
+  transform: translateX(4px);
+}
+
+/* Done State */
+.contact-done {
+  padding: 32px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.contact-done-title {
+  font-family: "Cinzel", "Playfair Display", Georgia, serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: #1a1a1a;
+  margin: 0 0 10px;
+}
+
+.contact-done-desc {
+  font-family: "Public Sans", sans-serif;
+  font-size: 15px;
+  color: #555;
+  margin: 0 0 20px;
+}
+
+.contact-btn-reset {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: "Public Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Direct Contacts */
+.contact-direct {
   display: grid;
-  gap: 1rem;
-  justify-items: start;
-  padding: clamp(1.6rem, 4vw, 2.4rem);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--bone-2);
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  padding-top: 36px;
+  margin-top: 10px;
 }
 
-/* ---------- direct details ---------- */
-
-.contact__direct {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  border-top: 1px solid var(--line);
-  padding-top: clamp(1.4rem, 3vh, 2rem);
+.contact-direct-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.contact__direct .eyebrow {
-  display: block;
-  margin-bottom: 0.5rem;
+.contact-direct-eyebrow {
+  font-family: "Public Sans", sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #7a7670;
 }
 
-.contact__mail {
-  font-family: var(--serif);
-  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
-  border-bottom: 1px solid var(--line);
-  transition: border-color 0.45s var(--ease-out), color 0.45s var(--ease-out);
-}
-.contact__mail:hover {
-  color: var(--clay);
-  border-color: var(--clay);
+.contact-mail-link {
+  font-family: "Cinzel", "Playfair Display", Georgia, serif;
+  font-size: clamp(18px, 1.8vw, 24px);
+  color: #1a1a1a;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color 0.2s ease;
 }
 
-@media (max-width: 900px) {
-  .contact__grid {
-    grid-template-columns: 1fr;
+.contact-mail-link:hover {
+  color: #b67d56;
+}
+
+.contact-studio-address {
+  font-family: "Public Sans", sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #635f58;
+  margin: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 960px) {
+  .contact-section {
+    padding: 70px 0 90px;
   }
-  .contact__media-wrap {
+  .contact-wrap {
+    padding: 0 24px;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .contact-media-wrap {
     position: relative;
     top: auto;
   }
-  .contact__media {
-    aspect-ratio: 16 / 10;
+  .contact-media {
+    aspect-ratio: 16 / 11;
   }
-  .contact__line-2 {
+  .contact-title-line2 {
     padding-left: 1.5rem;
+  }
+  .contact-direct {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
 }
