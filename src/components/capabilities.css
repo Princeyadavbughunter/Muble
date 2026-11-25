@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    CAPABILITIES - Sticky-stack scroll cards
    Each card pins while the next one slides over it
    ============================================================ */
@@ -23,9 +23,9 @@
   box-shadow: 0 20px 60px rgba(0,0,0,0.10);
 }
 
-.cap-card--bareshell   { background: #f5f2ee; }
-.cap-card--modular     { background: #eef0ed; }
-.cap-card--spaceplanning { background: #edeef5; }
+.cap-card--bareshell   { background: #ffffff; border: 1px solid #e5e7eb; }
+.cap-card--modular     { background: #f8f9fa; border: 1px solid #e5e7eb; }
+.cap-card--spaceplanning { background: #ffffff; border: 1px solid #e5e7eb; }
 
 /* Left text panel */
 .cap-text {
@@ -42,10 +42,10 @@
 .cap-eyebrow {
   font-family: "Public Sans", sans-serif;
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #888;
+  color: var(--orange, #e83a25);
 }
 
 .cap-number {
@@ -53,7 +53,7 @@
   font-size: 72px;
   font-weight: 700;
   line-height: 1;
-  color: rgba(33,33,33,0.08);
+  color: rgba(232, 58, 37, 0.13);
   margin-top: -8px;
   margin-bottom: -12px;
   pointer-events: none;
@@ -65,7 +65,7 @@
   font-size: clamp(28px, 3vw, 42px);
   font-weight: 700;
   line-height: 1.15;
-  color: #1a1a1a;
+  color: #111827;
   margin: 0;
 }
 
@@ -73,7 +73,7 @@
   font-family: "Public Sans", sans-serif;
   font-size: 15px;
   line-height: 1.75;
-  color: #555;
+  color: #4b5563;
   margin: 0;
   max-width: 400px;
 }
@@ -90,8 +90,9 @@
   font-family: "Public Sans", sans-serif;
   font-size: 12px;
   font-weight: 500;
-  color: #444;
-  background: rgba(33,33,33,0.07);
+  color: #374151;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
   border-radius: 100px;
   padding: 5px 14px;
 }
@@ -105,17 +106,19 @@
   font-family: "Public Sans", sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: #1a1a1a;
+  color: #111827;
   background: transparent;
-  border: 1.5px solid #1a1a1a;
+  border: 1.5px solid #111827;
   border-radius: 100px;
   padding: 10px 22px;
   cursor: pointer;
-  transition: background 0.22s ease, color 0.22s ease;
+  transition: all 0.22s ease;
 }
 .cap-cta:hover {
-  background: #1a1a1a;
-  color: #fff;
+  background: var(--orange, #e83a25);
+  border-color: var(--orange, #e83a25);
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(232, 58, 37, 0.35);
 }
 
 /* Right image panel */

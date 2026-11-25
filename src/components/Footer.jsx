@@ -1,4 +1,4 @@
-﻿import { motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Reveal from '../ui/Reveal'
 import Magnetic from '../ui/Magnetic'
 import './footer.css'
@@ -64,23 +64,25 @@ export default function Footer() {
           </nav>
         </div>
 
-        {/* Muble wordmark — bottom 20% hidden/clipped at the line */}
+        {/* Mueble Brand Logo */}
         <div className="footer__mark-wrap">
           <motion.div
-            className="footer__mark"
-            initial={{ opacity: 0, y: 40 }}
+            className="footer__mark footer__mark--logo"
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-5%' }}
-            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-            aria-hidden="true"
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           >
-            Muble<span className="italic">.</span>
+            <img
+              src="/logo/Mueble Design Logo.png"
+              alt="Mueble India"
+              className="footer__logo-img"
+            />
           </motion.div>
         </div>
 
         <div className="footer__bar">
-          <span className="body-sm">© {new Date().getFullYear()} Muble Ltd.</span>
-          <span className="body-sm">Registered in England · 08842217</span>
+          <span className="body-sm">© {new Date().getFullYear()} Mueble India.</span>
           <Magnetic strength={0.25}>
             <a className="link-under footer__top-link" href="#top">
               Back to top ↑

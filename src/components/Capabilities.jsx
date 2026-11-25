@@ -1,4 +1,4 @@
-import "./capabilities.css";
+ï»¿import "./capabilities.css";
 
 const CAPABILITIES = [
   {
@@ -6,9 +6,9 @@ const CAPABILITIES = [
     number: "01",
     label: "Our Capabilities",
     title: "Bareshell Office Transformation",
-    desc: "We convert raw concrete shells into world-class workspaces. From MEP planning and false ceiling systems to premium flooring and bespoke joinery — every millimetre is precision-crafted for your brand.",
+    desc: "We convert raw concrete shells into world-class workspaces. From MEP planning and false ceiling systems to premium flooring and bespoke joinery - every millimetre is precision-crafted for your brand.",
     tags: ["Turnkey Execution", "Corporate Fit-Out", "Modular Systems"],
-    image: "/bareshell_interior.jpg",
+    image: "/slider/silder 1.png",
   },
   {
     id: "modular",
@@ -17,7 +17,7 @@ const CAPABILITIES = [
     title: "Innovative Modular Furniture",
     desc: "Purpose-built modular furniture systems that evolve with your space. Precision-engineered in our in-house workshop, each piece balances structural integrity with refined aesthetics.",
     tags: ["Custom Fabrication", "Ergonomic Design", "In-House Workshop"],
-    image: "/modular_furniture.jpg",
+    image: "/slider/sl2.png",
   },
   {
     id: "spaceplanning",
@@ -26,7 +26,7 @@ const CAPABILITIES = [
     title: "Space Planning Expert",
     desc: "Strategic space planning that maximises flow, function, and feeling. We map every square foot to deliver environments that inspire productivity, comfort, and a lasting sense of place.",
     tags: ["3D Visualization", "Workflow Mapping", "Zoning Strategy"],
-    image: "/hotel_interior.jpg",
+    image: "/slider/sl3.png",
   },
 ];
 

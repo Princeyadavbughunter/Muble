@@ -3,52 +3,60 @@ import './clientLogos.css'
 
 const CLIENTS = [
   {
-    id: 'ifc',
-    name: 'IFC',
-    desc: 'International Finance Corp',
-    category: 'Commercial Architecture',
-  },
-  {
-    id: 'wave',
-    name: 'WAVE',
-    desc: 'Wave Infratech',
-    category: 'Turnkey Civil & Fitouts',
-  },
-  {
     id: 'nexa',
     name: 'NEXA',
     desc: 'Premium Automotive Experience',
     category: 'Hospitality Lounges',
-  },
-  {
-    id: 'emaar',
-    name: 'EMAAR',
-    desc: 'Luxury Properties & Estates',
-    category: 'Five-Star Residences',
+    logo: '/clients/nexa.png',
   },
   {
     id: 'indigo',
-    name: 'INDIGO',
+    name: 'IndiGo',
     desc: 'Aviation & Global Workspaces',
     category: 'Modular Workstations',
+    logo: '/clients/indigo.png',
   },
   {
     id: 'medanta',
     name: 'Medanta',
     desc: 'The Medicity Healthcare',
     category: 'Hospital Interior & Suites',
+    logo: '/clients/medanta.png',
   },
   {
-    id: 'prag',
-    name: 'PRAG',
-    desc: 'PRAG Industries',
-    category: 'Bareshell Transformation',
+    id: 'hdfc_bank',
+    name: 'HDFC Bank',
+    desc: 'Banking & Financial Services',
+    category: 'Corporate Interiors',
+    logo: '/clients/hdfc_bank.png',
   },
   {
-    id: 'nirvasa',
-    name: 'Nirvasa',
-    desc: 'Healthcare & Wellness',
-    category: 'Biophilic Clinical Design',
+    id: 'samsung',
+    name: 'Samsung',
+    desc: 'Global Technology Leader',
+    category: 'Experience Centres',
+    logo: '/clients/samsung.png',
+  },
+  {
+    id: 'maruti_suzuki',
+    name: 'Maruti Suzuki',
+    desc: 'Automobile Showrooms',
+    category: 'Showroom Design & Fitouts',
+    logo: '/clients/maruti_suzuki.png',
+  },
+  {
+    id: 'dlf',
+    name: 'DLF',
+    desc: 'Luxury Properties & Estates',
+    category: 'Five-Star Residences',
+    logo: '/clients/dlf.png',
+  },
+  {
+    id: 'm3m_ifc',
+    name: 'M3M IFC',
+    desc: 'International Financial Center',
+    category: 'Commercial Architecture & Towers',
+    logo: '/clients/M3M IFC Corporate Logo.png',
   },
 ]
 
@@ -70,7 +78,7 @@ export default function ClientLogos() {
           </p>
         </div>
 
-        {/* 2 Rows of 4 Logo Cards (Exact Image 2 Specification) */}
+        {/* 2 Rows of 4 Logo Cards */}
         <div className="client-logos-grid">
           {CLIENTS.map((client, index) => (
             <motion.div
@@ -87,9 +95,12 @@ export default function ClientLogos() {
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
             >
               <div className="client-logo-badge">
-                <span className={`client-logo-text client-logo-${client.id}`}>
-                  {client.name}
-                </span>
+                <img
+                  src={client.logo}
+                  alt={client.name}
+                  className="client-logo-img"
+                  loading="lazy"
+                />
               </div>
               <div className="client-logo-info">
                 <span className="client-logo-name">{client.desc}</span>
@@ -112,7 +123,7 @@ export default function ClientLogos() {
           </div>
           <div className="client-stat-divider" />
           <div className="client-stat-item">
-            <span className="client-stat-num">8+</span>
+            <span className="client-stat-num">36+</span>
             <span className="client-stat-label">Enterprise Partners</span>
           </div>
         </div>

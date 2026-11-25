@@ -1,6 +1,7 @@
-﻿.footer {
-  background: var(--ink);
-  color: var(--bone);
+.footer {
+  background: #f0f0f0;
+  color: #1a1a1a;
+  border-top: 1px solid #e2e4e8;
   padding: clamp(4rem, 12vh, 8rem) var(--gutter) clamp(1.5rem, 4vh, 2.5rem);
   overflow: hidden;
 }
@@ -25,6 +26,7 @@
 
 .footer__say-text {
   line-height: 1.35;
+  color: #111827;
 }
 
 /* ---------- subscribe ---------- */
@@ -33,42 +35,43 @@
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  border-bottom: 1px solid rgba(246, 242, 236, 0.25);
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.2);
   padding-bottom: 0.7rem;
   transition: border-color 0.5s var(--ease-out);
 }
 .footer__sub:focus-within {
-  border-bottom-color: var(--clay-soft);
+  border-bottom-color: var(--orange, #e83a25);
 }
 
 .footer__sub input {
   flex: 1;
   font: inherit;
   font-size: 0.92rem;
-  font-weight: 300;
-  color: var(--bone);
+  font-weight: 400;
+  color: #111827;
   background: transparent;
   border: none;
   outline: none;
 }
 .footer__sub input::placeholder {
-  color: rgba(246, 242, 236, 0.42);
+  color: rgba(0, 0, 0, 0.45);
 }
 
 .footer__sub button {
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  border: 1px solid rgba(246, 242, 236, 0.28);
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  color: #111827;
   display: grid;
   place-items: center;
   transition: background 0.45s var(--ease-out), color 0.45s var(--ease-out),
     border-color 0.45s var(--ease-out);
 }
 .footer__sub button:hover {
-  background: var(--bone);
-  color: var(--ink);
-  border-color: var(--bone);
+  background: var(--orange, #e83a25);
+  color: #ffffff;
+  border-color: var(--orange, #e83a25);
 }
 
 /* ---------- link columns ---------- */
@@ -80,7 +83,7 @@
 }
 
 .footer__col .eyebrow {
-  color: rgba(246, 242, 236, 0.4);
+  color: var(--orange, #e83a25);
   margin-bottom: 1rem;
 }
 
@@ -92,45 +95,50 @@
 
 .footer__col a {
   font-size: 0.92rem;
-  font-weight: 300;
-  color: rgba(246, 242, 236, 0.82);
+  font-weight: 400;
+  color: #4b5563;
   transition: color 0.4s var(--ease-out), padding-left 0.5s var(--ease-out);
 }
 .footer__col a:hover {
-  color: var(--clay-soft);
+  color: var(--orange, #e83a25);
   padding-left: 0.35rem;
 }
 
-/* ---------- oversized wordmark — bottom 10% clipped at the line ---------- */
+/* ---------- brand logo in footer ---------- */
 
 .footer__mark-wrap {
   position: relative;
   width: 100%;
-  margin-top: clamp(1rem, 3vh, 2rem);
-  margin-bottom: 1.5rem;
-  border-bottom: 1px solid rgba(246, 242, 236, 0.18);
+  margin-top: clamp(2rem, 5vh, 4rem);
+  margin-bottom: 2rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: clamp(1.5rem, 4vh, 3rem);
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.footer__mark {
-  font-family: var(--serif);
-  font-weight: 300;
-  line-height: 0.86;
-  letter-spacing: -0.03em;
-  font-size: clamp(3rem, 36vw, 38rem);
-  white-space: nowrap;
-  color: rgba(246, 242, 236, 0.94);
+.footer__mark--logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.footer__logo-img {
+  width: 100%;
+  max-width: clamp(280px, 70vw, 860px);
+  height: auto;
+  max-height: clamp(120px, 30vh, 240px);
+  object-fit: contain;
   display: block;
-  /* Bottom 10% completely clipped/hidden */
-  clip-path: inset(0 0 10% 0);
-  /* Pulls bottom border up to exact 90% line */
-  margin-bottom: -8.5%;
-  border-bottom: none;
-  padding-bottom: 0;
+  margin: 0 auto;
+  transition: transform 0.4s var(--ease-out);
 }
 
-.footer__mark .italic {
-  color: var(--clay-soft);
+.footer__logo-img:hover {
+  transform: scale(1.02);
 }
 
 /* ---------- bottom bar ---------- */
@@ -144,11 +152,11 @@
 }
 
 .footer__bar .body-sm {
-  color: rgba(246, 242, 236, 0.5);
+  color: #6b7280;
 }
 
 .footer__top-link {
-  color: rgba(246, 242, 236, 0.85);
+  color: #374151;
 }
 
 @media (max-width: 860px) {

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { navLinks, capabilities } from '../data/site'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { navLinks, capabilities, enterpriseClients } from '../data/site'
 import './nav.css'
 
 const EASE = [0.76, 0, 0.24, 1]
@@ -8,8 +9,29 @@ const EASE = [0.76, 0, 0.24, 1]
 export default function Nav() {
   const [open, setOpen] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
+  const [projectsDropdownOpen, setProjectsDropdownOpen] = useState(false)
   const [cartOpen, setCartOpen] = useState(false)
   const dropdownTimeoutRef = useRef(null)
+  const projectsTimeoutRef = useRef(null)
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  const handleNavAnchor = (e, hash) => {
+    e.preventDefault()
+    setProjectsDropdownOpen(false)
+    setDropdownOpen(false)
+    setOpen(false)
+    if (location.pathname !== '/') {
+      navigate('/' + hash)
+    } else {
+      const el = document.querySelector(hash)
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' })
+      } else {
+        window.location.hash = hash
+      }
+    }
+  }
 
   // freeze page behind overlay or cart drawer
   useEffect(() => {
@@ -32,6 +54,7 @@ export default function Nav() {
         setOpen(false)
         setCartOpen(false)
         setDropdownOpen(false)
+        setProjectsDropdownOpen(false)
       }
     }
     window.addEventListener('keydown', onKey)
@@ -55,13 +78,28 @@ export default function Nav() {
     window.dispatchEvent(new CustomEvent('select-capability', { detail: id }))
   }
 
+  const handleMouseEnterProjects = () => {
+    if (projectsTimeoutRef.current) clearTimeout(projectsTimeoutRef.current)
+    setProjectsDropdownOpen(true)
+  }
+
+  const handleMouseLeaveProjects = () => {
+    projectsTimeoutRef.current = setTimeout(() => {
+      setProjectsDropdownOpen(false)
+    }, 180)
+  }
+
   return (
     <>
       <header className={`ecomuz-nav-container ${open ? 'is-over' : ''}`}>
-        {/* Brand Logo - Muble */}
-        <a className="ecomuz-logo" href="#top" aria-label="Muble — Home">
-          Muble
-        </a>
+        {/* Brand Logo - Mueble Design Logo */}
+        <Link className="ecomuz-logo" to="/" aria-label="Mueble — Home">
+          <img
+            src="/logo/Mueble Design Logo.png"
+            alt="Mueble — Design to Define"
+            className="ecomuz-logo-img"
+          />
+        </Link>
 
         {/* Center Links */}
         <nav className="ecomuz-nav-links" aria-label="Primary Navigation">
@@ -154,38 +192,145 @@ export default function Nav() {
               )
             }
 
+            if (link.isProjectDropdown) {
+              return (
+                <div
+                  key={link.label}
+                  className="ecomuz-dropdown-wrap"
+                  onMouseEnter={handleMouseEnterProjects}
+                  onMouseLeave={handleMouseLeaveProjects}
+                >
+                  <button
+                    type="button"
+                    className={`ecomuz-nav-link ecomuz-dropdown-btn ${projectsDropdownOpen ? 'is-active' : ''}`}
+                    onClick={() => setProjectsDropdownOpen((v) => !v)}
+                    aria-expanded={projectsDropdownOpen}
+                    aria-haspopup="true"
+                  >
+                    <span>{link.label}</span>
+                    <svg
+                      className={`ecomuz-chevron ${projectsDropdownOpen ? 'is-rotated' : ''}`}
+                      width="10"
+                      height="10"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.4"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="m6 9 6 6 6-6" />
+                    </svg>
+                  </button>
+
+                  <AnimatePresence>
+                    {projectsDropdownOpen && (
+                      <motion.div
+                        className="ecomuz-dropdown-panel ecomuz-dropdown-panel--enterprise"
+                        initial={{ opacity: 0, y: 12, x: '-50%' }}
+                        animate={{ opacity: 1, y: 0, x: '-50%' }}
+                        exit={{ opacity: 0, y: 8, x: '-50%' }}
+                        transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                        onMouseEnter={handleMouseEnterProjects}
+                        onMouseLeave={handleMouseLeaveProjects}
+                      >
+                        <div className="ecomuz-dropdown-box ecomuz-dropdown-box--enterprise">
+                          <div className="ecomuz-enterprise-dropdown-head">
+                            <div>
+                              <span className="eyebrow" style={{ color: '#E83A25', fontWeight: 600, fontSize: '0.72rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                                Trusted Partners &amp; Enterprise Clients
+                              </span>
+                              <h3 className="ecomuz-enterprise-dropdown-title">
+                                Crafting Spaces for Industry Leaders
+                              </h3>
+                            </div>
+                            <a
+                              href="#clients"
+                              className="ecomuz-enterprise-viewall"
+                              onClick={(e) => handleNavAnchor(e, '#clients')}
+                            >
+                              Explore All 35+ Clients &rarr;
+                            </a>
+                          </div>
+
+                          <div className="ecomuz-enterprise-grid">
+                            {enterpriseClients.map((client) => (
+                              <a
+                                key={client.id}
+                                href="#clients"
+                                className="ecomuz-enterprise-card"
+                                onClick={(e) => handleNavAnchor(e, '#clients')}
+                              >
+                                <div className="ecomuz-enterprise-card-badge">
+                                  <img
+                                    src={client.logo}
+                                    alt={client.name}
+                                    loading="lazy"
+                                  />
+                                </div>
+                                <div className="ecomuz-enterprise-card-text">
+                                  <h4 className="ecomuz-enterprise-card-title">{client.desc}</h4>
+                                  <span className="ecomuz-enterprise-card-sub">{client.category}</span>
+                                </div>
+                              </a>
+                            ))}
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              )
+            }
+
+            if (link.isRoute) {
+              return (
+                <Link key={link.href} to={link.href} className="ecomuz-nav-link">
+                  {link.label}
+                </Link>
+              )
+            }
+
             return (
-              <a key={link.href} href={link.href} className="ecomuz-nav-link">
+              <a
+                key={link.href}
+                href={link.href}
+                className="ecomuz-nav-link"
+                onClick={(e) => {
+                  if (link.href.startsWith('#')) handleNavAnchor(e, link.href)
+                }}
+              >
                 {link.label}
               </a>
             )
           })}
         </nav>
 
-        {/* Right Area: Exact Ecomuz Cart trigger & mobile menu burger */}
+        {/* Right Area: Our Story button & mobile menu burger */}
         <div className="ecomuz-nav-right">
-          <button
-            className="ecomuz-cart-trigger"
-            onClick={() => setCartOpen(true)}
-            aria-label="Shopping bag with 0 items"
-            title="Shopping cart"
+          <Link
+            to="/about"
+            className="ecomuz-story-btn"
+            aria-label="Our Story - About Mueble India"
           >
-            <div className="ecomuz-cart-icon">
-              {/* Exact SVG from ecomuz.framer.ai */}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                fill="none"
+            <span>Our Story</span>
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5"
                 stroke="currentColor"
                 strokeWidth="1.5"
-              >
-                <path d="M4.34 16.878 3.179 9.936c-.19-1.13-.284-1.694.007-2.065.292-.371.83-.371 1.906-.371H18.91c1.076 0 1.614 0 1.906.37.29.372.196.936.007 2.066l-1.163 6.942c-.41 2.448-.615 3.672-1.427 4.397S16.253 22 13.92 22h-3.84c-2.333 0-3.5 0-4.312-.725-.812-.724-1.017-1.949-1.427-4.397ZM7 7.5V7a5 5 0 0 1 10 0v.5m-12.5 10h15" />
-              </svg>
-            </div>
-            {/* Exact pill badge border: 1.5px solid rgba(33,33,33,0.5); border-radius: 80px; */}
-            <span className="ecomuz-cart-badge">0</span>
-          </button>
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </Link>
 
           <button
             className={`ecomuz-burger-btn ${open ? 'is-open' : ''}`}
@@ -210,6 +355,7 @@ export default function Nav() {
           <MenuOverlay
             onClose={() => setOpen(false)}
             onSelectCapability={handleSelectCapability}
+            onNavAnchor={handleNavAnchor}
           />
         )}
       </AnimatePresence>
@@ -295,7 +441,7 @@ function CartDrawer({ onClose }) {
   )
 }
 
-function MenuOverlay({ onClose, onSelectCapability }) {
+function MenuOverlay({ onClose, onSelectCapability, onNavAnchor }) {
   const [capsExpanded, setCapsExpanded] = useState(true)
 
   return (
@@ -312,7 +458,10 @@ function MenuOverlay({ onClose, onSelectCapability }) {
           <div className="menu__line">
             <motion.a
               href="#top"
-              onClick={onClose}
+              onClick={(e) => {
+                if (onNavAnchor) onNavAnchor(e, '#top')
+                onClose()
+              }}
               initial={{ y: '110%' }}
               animate={{ y: '0%' }}
               exit={{ y: '110%' }}
@@ -328,7 +477,10 @@ function MenuOverlay({ onClose, onSelectCapability }) {
             <div className="menu__caps-header">
               <motion.a
                 href="#capabilities"
-                onClick={onClose}
+                onClick={(e) => {
+                  if (onNavAnchor) onNavAnchor(e, '#capabilities')
+                  onClose()
+                }}
                 initial={{ y: '110%' }}
                 animate={{ y: '0%' }}
                 exit={{ y: '110%' }}
@@ -373,24 +525,27 @@ function MenuOverlay({ onClose, onSelectCapability }) {
 
           {/* About us */}
           <div className="menu__line">
-            <motion.a
-              href="#about"
-              onClick={onClose}
+            <motion.div
               initial={{ y: '110%' }}
               animate={{ y: '0%' }}
               exit={{ y: '110%' }}
               transition={{ duration: 0.65, delay: 0.3 }}
             >
-              <span className="menu__index">03</span>
-              About us
-            </motion.a>
+              <Link to="/about" onClick={onClose}>
+                <span className="menu__index">03</span>
+                About us
+              </Link>
+            </motion.div>
           </div>
 
           {/* Projects */}
           <div className="menu__line">
             <motion.a
-              href="#projects"
-              onClick={onClose}
+              href="#clients"
+              onClick={(e) => {
+                if (onNavAnchor) onNavAnchor(e, '#clients')
+                onClose()
+              }}
               initial={{ y: '110%' }}
               animate={{ y: '0%' }}
               exit={{ y: '110%' }}

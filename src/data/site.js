@@ -161,7 +161,7 @@ export const capabilities = [
       { label: 'Scope', val: 'Turnkey Civil' },
       { label: 'Standard', val: 'Grade-A Prime' },
     ],
-    image: '/bareshell_interior.jpg',
+    image: '/slider/silder 1.png',
     alt: 'Bareshell interior undergoing architectural transformation with concrete and oak fluted walls',
   },
   {
@@ -203,8 +203,67 @@ export const capabilities = [
       { label: 'Timber', val: 'Solid English Oak' },
       { label: 'Craft', val: 'Kent Workshop' },
     ],
-    image: '/modular_furniture.jpg',
+    image: '/slider/sl2.png',
     alt: 'Innovative modular workstation with illuminated oak shelving and fluted cabinets',
+  },
+]
+
+export const enterpriseClients = [
+  {
+    id: 'nexa',
+    name: 'NEXA',
+    desc: 'Premium Automotive Experience',
+    category: 'Hospitality Lounges',
+    logo: '/clients/nexa.png',
+  },
+  {
+    id: 'indigo',
+    name: 'IndiGo',
+    desc: 'Aviation & Global Workspaces',
+    category: 'Modular Workstations',
+    logo: '/clients/indigo.png',
+  },
+  {
+    id: 'medanta',
+    name: 'Medanta',
+    desc: 'The Medicity Healthcare',
+    category: 'Hospital Interior & Suites',
+    logo: '/clients/medanta.png',
+  },
+  {
+    id: 'hdfc_bank',
+    name: 'HDFC Bank',
+    desc: 'Banking & Financial Services',
+    category: 'Corporate Interiors',
+    logo: '/clients/hdfc_bank.png',
+  },
+  {
+    id: 'samsung',
+    name: 'Samsung',
+    desc: 'Global Technology Leader',
+    category: 'Experience Centres',
+    logo: '/clients/samsung.png',
+  },
+  {
+    id: 'maruti_suzuki',
+    name: 'Maruti Suzuki',
+    desc: 'Automobile Showrooms',
+    category: 'Showroom Design & Fitouts',
+    logo: '/clients/maruti_suzuki.png',
+  },
+  {
+    id: 'dlf',
+    name: 'DLF',
+    desc: 'Luxury Properties & Estates',
+    category: 'Five-Star Residences',
+    logo: '/clients/dlf.png',
+  },
+  {
+    id: 'm3m_ifc',
+    name: 'M3M IFC',
+    desc: 'International Financial Center',
+    category: 'Commercial Architecture & Towers',
+    logo: '/clients/M3M IFC Corporate Logo.png',
   },
 ]
 
@@ -221,6 +280,11 @@ export const navLinks = [
       { label: 'Innovative Modular Furniture', href: '#capabilities', id: 'modular-furniture' },
     ],
   },
-  { label: 'About us', href: '#about' },
-  { label: 'Projects', href: '#projects' },
+  { label: 'About us', href: '/about', isRoute: true },
+  {
+    label: 'Projects',
+    href: '#clients',
+    isProjectDropdown: true,
+  },
 ]
+

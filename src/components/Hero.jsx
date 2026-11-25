@@ -25,7 +25,7 @@ const SCENES = [
   },
 ]
 
-export default function Hero({ ready }) {
+export default function Hero() {
   const [activeSceneIndex, setActiveSceneIndex] = useState(0)
   const timerRef = useRef(null)
 
